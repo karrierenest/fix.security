@@ -1,0 +1,164 @@
+import { storyblokEditable } from "@storyblok/react";
+
+import { RichTextRenderer } from "@/utils/richTextRenderer";
+import Heading from "@/components/common/MarkdownContent/Heading";
+import {cn} from "@/utils/css";
+import {LuCheck} from "react-icons/lu";
+import ButtonLink from "@/components/common/links/ButtonLink";
+
+const DynamicComponent = ({ blok }) => {
+    if (blok.component === "feature") {
+        return (
+            <div className="column feature" {...storyblokEditable(blok)}>
+                <p>{blok.name}</p>
+            </div>
+        );
+    }
+
+    if (blok.component === "Hero") {
+        return (
+            <div className="hero" {...storyblokEditable(blok)}>
+                <img src={blok.Picture.filename} alt={blok.Picture.alt || "Hero Image"} />
+                <RichTextRenderer document={blok.Description} />
+            </div>
+        );
+    }
+
+    return null;
+};
+
+const Hero = ({ story }) => {
+    if (!story || !story.content) {
+        return <div>No content available</div>;
+    }
+
+    return (
+        <>
+            {JSON.stringify(story)}
+            <Heading className="mb-3 text-lg font-bold uppercase text-gray-600 sm:text-xl">
+                Pricing
+            </Heading>
+            {story.content.body.map((tier, index) => (
+                <div
+                    key={`tier-${tier.name}`}
+                    className={cn(
+                        tier.mostPopular
+                            ? 'ring-2 ring-cornflower-blue-600'
+                            : 'ring-1 ring-gray-200',
+                        'flex flex-col rounded-2xl p-8',
+                    )}
+                >
+                    <h3
+                        id={`tier-${slugger.slug(tier.name)}`}
+                        className="flex items-center gap-3 text-3xl font-bold text-cornflower-blue-600"
+                    >
+                        <tier.icon />
+                        {tier.name}
+                        {tier.mostPopular ? (
+                            <span className="inline-flex items-center whitespace-nowrap rounded-md bg-marian-blue-50 px-2 py-1 text-xs xl:hidden">
+                      Most popular
+                    </span>
+                        ) : null}
+                    </h3>
+                    <p className="mt-6 text-base font-medium leading-6 text-gray-900 xl:min-h-[6rem]">
+                        {tier.description}
+                    </p>
+                    <div className="my-8 border-b border-gray-900/10 pb-8 text-base">
+                        <p className="flex items-baseline gap-x-1">
+                            {typeof tier.price === 'string' ? (
+                                <>
+                        <span className="text-3xl font-medium tracking-tight text-gray-900">
+                          {tier.price}
+                        </span>
+                                </>
+                            ) : (
+                                <>
+                        <span className="text-3xl font-bold tracking-tight text-gray-900">
+                          {tier.price.monthly}
+                        </span>
+                                    <span className="ml-1 text-lg font-semibold leading-6 text-gray-900 xl:ml-0 xl:mt-0.5">
+                          / month
+                        </span>
+                                </>
+                            )}
+                        </p>
+                        {'maximum' in tier.cloudAccounts ? (
+                            <p className="mt-0.5 md:mb-6 xl:mb-12">
+                                maximum of {tier.cloudAccounts.maximum} cloud account
+                            </p>
+                        ) : (
+                            <>
+                                <p className="mt-0.5">
+                                    {tier.cloudAccounts.included} cloud accounts included
+                                </p>
+                                <p>
+                                    (${tier.cloudAccounts.additionalCost} / month per
+                                    additional account)
+                                </p>
+                            </>
+                        )}
+                    </div>
+                    <div className="gap-y-2 text-base">
+                        <p>{tier.scanFrequency} scans</p>
+                        <p>
+                            {tier.seats.included
+                                ? `${tier.seats.included} seats included${tier.seats.maximum ? ` (${tier.seats.maximum} max)` : ''}`
+                                : `${tier.seats.maximum} seat${tier.seats.maximum === 1 ? '' : 's'} maximum`}
+                        </p>
+                    </div>
+                    <p className="mt-6 text-base font-semibold text-gray-900">
+                        {index === 0
+                            ? 'Features:'
+                            : `Everything in ${tiers[index - 1].name}, and:`}
+                    </p>
+                    <ul
+                        role="list"
+                        className={`mt-1.5 space-y-1.5 text-sm leading-6 text-gray-600 ${index < 2 ? 'md:min-h-[14.625rem]' : 'md:min-h-[10.875rem]'} xl:min-h-[17.625rem]`}
+                    >
+                        {tier.features.map((feature, index) => (
+                            <li
+                                key={`feature-${slugger.slug(tier.name)}-${index}`}
+                                className="flex gap-x-2"
+                            >
+                                <LuCheck
+                                    className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"
+                                    aria-hidden="true"
+                                />
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="mt-6 text-base font-semibold text-gray-900">
+                        Support:
+                    </p>
+                    <ul
+                        role="list"
+                        className="mt-1.5 grow space-y-1.5 text-sm leading-6 text-gray-600"
+                    >
+                        {tier.support.map((option, index) => (
+                            <li
+                                key={`support-${slugger.slug(tier.name)}-${index}`}
+                                className="flex gap-x-2"
+                            >
+                                <LuCheck
+                                    className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"
+                                    aria-hidden="true"
+                                />
+                                {option}
+                            </li>
+                        ))}
+                    </ul>
+                    <ButtonLink
+                        href={tier.href}
+                        variant={tier.mostPopular ? 'default' : 'outline'}
+                        className="mt-9 block text-center"
+                    >
+                        {tier.cta}
+                    </ButtonLink>
+                </div>
+            ))}
+        </>
+    );
+};
+
+export default Hero;

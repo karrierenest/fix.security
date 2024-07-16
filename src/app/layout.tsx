@@ -15,6 +15,7 @@ import { siteConfig } from '@/constants/config';
 import { isProd } from '@/constants/env';
 import PosthogProvider from '@/providers/posthog';
 import { openGraph } from '@/utils/og';
+import "../../storyblok";
 
 const url = siteConfig.url;
 const title = siteConfig.title;
@@ -83,23 +84,30 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`scroll-smooth ${plusJakartaSans.variable}`}>
-      <head>
-        <PlausibleProvider domain="fix.security" scriptProps={{ nonce }} />
-      </head>
-      <body className="bg-white">
-        <PosthogProvider>
-          <Header />
-          <main>
-            {children}
-            <Suspense>
-              <BlogNewsletterForm nonce={nonce} />
-            </Suspense>
-          </main>
-          <Footer />
-          <CookieConsent />
-          <Suspense>
-            <PosthogPageView />
-          </Suspense>
+    <head>
+      <PlausibleProvider domain="fix.security" scriptProps={{nonce}}/>
+      {/*<meta httpEquiv="Content-Security-Policy" content="*/}
+      {/*    worker-src blob:;*/}
+      {/*    child-src blob: gap:;*/}
+      {/*    img-src 'self' https://a.storyblok.com data: blob:;*/}
+      {/*    font-src 'self' data:;*/}
+      {/*    default-src 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:;*/}
+      {/*  "/>*/}
+    </head>
+    <body className="bg-white">
+    <PosthogProvider>
+      <Header/>
+      <main>
+        {children}
+        <Suspense>
+          <BlogNewsletterForm nonce={nonce}/>
+        </Suspense>
+      </main>
+      <Footer/>
+      <CookieConsent/>
+      <Suspense>
+        <PosthogPageView/>
+      </Suspense>
         </PosthogProvider>
       </body>
     </html>
