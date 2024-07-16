@@ -6,6 +6,7 @@ import Page from "src/components/storyblok/Page";
 import Teaser from "src/components/storyblok/Teaser";
 import Hero from "src/components/storyblok/Hero";
 import Customers from "@/components/storyblok/Customers";
+import Pricing from "@/components/storyblok/Pricing";
 
 const components = {
     feature: Feature,
@@ -13,7 +14,8 @@ const components = {
     teaser: Teaser,
     page: Page,
     hero: Hero,
-    customers: Customers
+    customers: Customers,
+    pricing: Pricing
 };
 
 storyblokInit({

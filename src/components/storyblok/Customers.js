@@ -25,10 +25,6 @@ const DynamicComponent = ({ blok }) => {
 
 const Customers = ({ blok }) => {
 
-    if (!blok) {
-        return <div>{JSON.stringify(blok)}</div>;
-    }
-
     return(
         <div className="bg-gray-50 py-16 sm:py-24" id="customers">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -37,7 +37,7 @@ export default function Home({ story }) {
           <title>Create Next App</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-          {JSON.stringify(story)}
+          {/*{JSON.stringify(story)}*/}
         {/*<StoryblokComponent blok={story.content} />*/}
       </div>
   );

@@ -14,6 +14,7 @@ export default async function Page({ params }) {
 
     return (
         <div>
+            {/*{JSON.stringify(story)}*/}
             <StoryblokRenderer story={story} />
         </div>
     );
