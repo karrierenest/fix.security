@@ -1,5 +1,6 @@
 import {cn} from "@/utils/css";
-import {LuBuilding, LuBuilding2, LuPersonStanding, LuWarehouse} from "react-icons/lu";
+import {LuBuilding, LuBuilding2, LuCheck, LuPersonStanding, LuWarehouse} from "react-icons/lu";
+import ButtonLink from "@/components/common/links/ButtonLink";
 
 const Pricing = ({ blok }) => {
     if (!blok || !blok.body) {
@@ -55,46 +56,25 @@ const Pricing = ({ blok }) => {
                                 </p>
                                 <div className="my-8 border-b border-gray-900/10 pb-8 text-base">
                                     <p className="flex items-baseline gap-x-1">
-                                        {typeof tier.price === 'string' ? (
-                                            <>
+
                         <span className="text-3xl font-medium tracking-tight text-gray-900">
                           {tier.price}
                         </span>
-                                            </>
-                                        ) : (
-                                            <>
-                        <span className="text-3xl font-bold tracking-tight text-gray-900">
-                          {tier.price.monthly}
-                        </span>
-                                                <span className="ml-1 text-lg font-semibold leading-6 text-gray-900 xl:ml-0 xl:mt-0.5">
-                          / month
-                        </span>
-                                            </>
-                                        )}
                                     </p>
-                                    {/*{'maximum' in tier.cloudAccounts ? (*/}
-                                    {/*    <p className="mt-0.5 md:mb-6 xl:mb-12">*/}
-                                    {/*        maximum of {tier.cloudAccounts.maximum} cloud account*/}
-                                    {/*    </p>*/}
-                                    {/*) : (*/}
-                                    {/*    <>*/}
-                                    {/*        <p className="mt-0.5">*/}
-                                    {/*            {tier.cloudAccounts.included} cloud accounts included*/}
-                                    {/*        </p>*/}
-                                    {/*        <p>*/}
-                                    {/*            (${tier.cloudAccounts.additionalCost} / month per*/}
-                                    {/*            additional account)*/}
-                                    {/*        </p>*/}
-                                    {/*    </>*/}
-                                    {/*)}*/}
+                                    {tier.price_description.length === 1 ? (
+                                        <p className="mt-0.5 md:mb-6 xl:mb-12">{tier.price_description[0].value}</p>
+                                    ) : (
+                                        tier.price_description.map((pd, index) => (
+                                            index === 0 ? (
+                                                <p className="mt-0.5">{pd.value}</p>
+                                            ) : (
+                                                <p>{pd.value}</p>
+                                            )
+                                        ))
+                                    )}
                                 </div>
                                 <div className="gap-y-2 text-base">
-                                    <p>{tier.scanFrequency} scans</p>
-                                    {/*<p>*/}
-                                    {/*    {tier.seats.included*/}
-                                    {/*        ? `${tier.seats.included} seats included${tier.seats.maximum ? ` (${tier.seats.maximum} max)` : ''}`*/}
-                                    {/*        : `${tier.seats.maximum} seat${tier.seats.maximum === 1 ? '' : 's'} maximum`}*/}
-                                    {/*</p>*/}
+                                    {tier.scans.map(scan => (<p>{scan.value}</p>))}
                                 </div>
                                 <p className="mt-6 text-base font-semibold text-gray-900">
                                     {index === 0
@@ -105,18 +85,18 @@ const Pricing = ({ blok }) => {
                                     role="list"
                                     className={`mt-1.5 space-y-1.5 text-sm leading-6 text-gray-600 ${index < 2 ? 'md:min-h-[14.625rem]' : 'md:min-h-[10.875rem]'} xl:min-h-[17.625rem]`}
                                 >
-                                    {/*{tier.features.map((feature, index) => (*/}
-                                    {/*    <li*/}
-                                    {/*        key={`feature-${slugger.slug(tier.name)}-${index}`}*/}
-                                    {/*        className="flex gap-x-2"*/}
-                                    {/*    >*/}
-                                    {/*        <LuCheck*/}
-                                    {/*            className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"*/}
-                                    {/*            aria-hidden="true"*/}
-                                    {/*        />*/}
-                                    {/*        {feature}*/}
-                                    {/*    </li>*/}
-                                    {/*))}*/}
+                                    {tier.price_feature_items.map((feature, index) => (
+                                        <li
+                                            key={`feature-${tier.name}-${index}`}
+                                            className="flex gap-x-2"
+                                        >
+                                            <LuCheck
+                                                className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"
+                                                aria-hidden="true"
+                                            />
+                                            {feature.value}
+                                        </li>
+                                    ))}
                                 </ul>
                                 <p className="mt-6 text-base font-semibold text-gray-900">
                                     Support:
@@ -125,25 +105,26 @@ const Pricing = ({ blok }) => {
                                     role="list"
                                     className="mt-1.5 grow space-y-1.5 text-sm leading-6 text-gray-600"
                                 >
-                                    {/*{tier.support.map((option, index) => (*/}
-                                    {/*    <li*/}
-                                    {/*        key={`support-${slugger.slug(tier.name)}-${index}`}*/}
-                                    {/*        className="flex gap-x-2"*/}
-                                    {/*    >*/}
-                                    {/*        <LuCheck*/}
-                                    {/*            className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"*/}
-                                    {/*            aria-hidden="true"*/}
-                                    {/*        />*/}
-                                    {/*        {option}*/}
-                                    {/*    </li>*/}
-                                    {/*))}*/}
+                                    {tier.support_items.map((option, index) => (
+                                        <li
+                                            key={`support-${tier.name}-${index}`}
+                                            className="flex gap-x-2"
+                                        >
+                                            <LuCheck
+                                                className="my-0.5 h-5 w-5 flex-none text-cornflower-blue-600"
+                                                aria-hidden="true"
+                                            />
+                                            {option.value}
+                                        </li>
+                                    ))}
                                 </ul>
-                                {/*<ButtonLink*/}
-                                {/*    variant={tier.mostPopular ? 'default' : 'outline'}*/}
-                                {/*    className="mt-9 block text-center"*/}
-                                {/*>*/}
-                                {/*    /!*{tier.cta}*!/*/}
-                                {/*</ButtonLink>*/}
+                                <ButtonLink
+                                    href={tier.href}
+                                    variant={tier.mostPopular ? 'default' : 'outline'}
+                                    className="mt-9 block text-center"
+                                >
+                                    {tier.cta}
+                                </ButtonLink>
                             </div>
                         ))}
                     </div>
