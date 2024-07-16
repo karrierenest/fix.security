@@ -1,28 +1,3 @@
-import {StoryblokComponent, storyblokEditable} from "@storyblok/react";
-
-import { RichTextRenderer } from "@/utils/richTextRenderer";
-
-const DynamicComponent = ({ blok }) => {
-    if (blok.component === "feature") {
-        return (
-            <div className="column feature" {...storyblokEditable(blok)}>
-                <p>{blok.name}</p>
-            </div>
-        );
-    }
-
-    if (blok.component === "Hero") {
-        return (
-            <div className="hero" {...storyblokEditable(blok)}>
-
-                <img src={blok.Picture.filename} alt={blok.Picture.alt || "Hero Image"} />
-            </div>
-        );
-    }
-
-    return null;
-};
-
 const Customers = ({ blok }) => {
 
     return(

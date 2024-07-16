@@ -1,15 +1,31 @@
 import {cn} from "@/utils/css";
-import {LuCheck} from "react-icons/lu";
-import ButtonLink from "@/components/common/links/ButtonLink";
+import {LuBuilding, LuBuilding2, LuPersonStanding, LuWarehouse} from "react-icons/lu";
 
 const Pricing = ({ blok }) => {
     if (!blok || !blok.body) {
         return <div>Pricing blok incorrect: {JSON.stringify(blok)}</div>;
     }
+    const icons = [
+        {
+            name: 'Free',
+            icon: (props) => <LuPersonStanding {...props} />
+        },
+        {
+            name: 'Plus',
+            icon: (props) => <LuWarehouse {...props} />
+        },
+        {
+            name: 'Business',
+            icon: (props) => <LuBuilding {...props} />
+        },
+        {
+            name: 'Enterprise',
+            icon: (props) => <LuBuilding2 {...props} />
+        }
+    ];
 
     return (
         <>
-            <section className="py-16 sm:py-24">
                 <div className="mt-20 flow-root">
                     <div className="mx-auto mt-10 grid max-w-md grid-cols-1 items-stretch gap-8 text-left md:max-w-3xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
                         {blok.body.map((tier, index) => (
@@ -26,7 +42,7 @@ const Pricing = ({ blok }) => {
                                     id={`tier-${tier.name}`}
                                     className="flex items-center gap-3 text-3xl font-bold text-cornflower-blue-600"
                                 >
-                                    {/*<tier.icon />*/}
+                                    {icons.filter(it => it.name === tier.name)[0].icon() }
                                     {tier.name}
                                     {tier.mostPopular ? (
                                         <span className="inline-flex items-center whitespace-nowrap rounded-md bg-marian-blue-50 px-2 py-1 text-xs xl:hidden">
@@ -132,7 +148,7 @@ const Pricing = ({ blok }) => {
                         ))}
                     </div>
                 </div>
-            </section>
+
         </>
 );
 };
