@@ -16,6 +16,7 @@ import Pricing_Custom_Plans from "@/components/storyblok/pricing/Pricing_Custom_
 import FAQ from "@/components/storyblok/faq/FAQ";
 import Hero from "src/components/storyblok/Hero";
 import Dashboard from "@/components/storyblok/Dashboard";
+import Testimonials from "@/components/storyblok/Testimonials";
 
 const components = {
     customers: Customers,
@@ -33,7 +34,8 @@ const components = {
     pricing_additional_seats: Pricing_Additional_Seats,
     pricing_custom_plans: Pricing_Custom_Plans,
     faq: FAQ,
-    dashboard: Dashboard
+    dashboard: Dashboard,
+    testimonials: Testimonials
 };
 
 storyblokInit({
