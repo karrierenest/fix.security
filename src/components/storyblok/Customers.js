@@ -1,7 +1,15 @@
+import {storyblokEditable} from "@storyblok/react";
+
 const Customers = ({ blok }) => {
 
+    if (!blok || !Array.isArray(blok.pictures)) {
+        return  (
+            <div>Error</div>
+        );
+    }
+
     return(
-        <div className="bg-gray-50 py-16 sm:py-24" id="customers">
+        <div className="bg-gray-50 py-16 sm:py-24" id="customers"  {...storyblokEditable(blok)}>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <h2 className="text-balance text-center text-2xl font-bold leading-8 text-gray-900">
                     {blok.caption}

@@ -1,4 +1,4 @@
-import { apiPlugin,storyblokInit } from "@storyblok/react";
+import { apiPlugin, storyblokInit } from "@storyblok/react";
 
 import Hero from "src/components/storyblok/Hero";
 import Customers from "@/components/storyblok/Customers";
@@ -29,6 +29,15 @@ const components = {
 storyblokInit({
     accessToken: "903rmFwzHj71DGgoXjUD1Qtt",
     use: [apiPlugin],
-    components
+    components,
+    apiOptions: {
+        cache: { type: 'memory', clear: 'auto' }  // Set cache to memory and clear it automatically
+    },
+    experimental: {
+        // Use experimental options to ensure cache is not used
+        readOptions: {
+            cache: 'no-store'
+        }
+    }
 });
 
