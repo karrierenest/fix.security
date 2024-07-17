@@ -19,6 +19,7 @@ import Dashboard from "@/components/storyblok/Dashboard";
 import Testimonials from "@/components/storyblok/Testimonials";
 import Motivation from "@/components/storyblok/Motivation";
 import About from "@/components/storyblok/About";
+import Meat_The_Team from "@/components/storyblok/Meat_The_Team";
 
 const components = {
     customers: Customers,
@@ -39,7 +40,8 @@ const components = {
     dashboard: Dashboard,
     testimonials: Testimonials,
     motivation: Motivation,
-    about: About
+    about: About,
+    meat_the_team: Meat_The_Team
 };
 
 storyblokInit({
