@@ -1,11 +1,12 @@
 import { storyblokEditable } from "@storyblok/react";
+import React from 'react';
 
 const Dashboard = ({ blok }) => (
-  <div className="mx-auto max-w-7xl px-6 lg:px-8" {...storyblokEditable(blok)}>
-
-    <img src={blok.picture.filename} alt={blok.picture.alt} />
-
-  </div>
+    <picture {...storyblokEditable(blok)}>
+        <source srcSet={`${blok.picture.filename}/m/0x0/filters:format(webp)`} type="image/webp" />
+        <source srcSet={`${blok.picture.filename}/m/0x0/filters:format(png)`} type="image/png" />
+        <img src={blok.picture.filename} alt={blok.picture.alt} />
+    </picture>
 );
 
 export default Dashboard;
