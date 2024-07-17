@@ -1,6 +1,5 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react";
 
-import Hero from "src/components/storyblok/Hero";
 import Customers from "@/components/storyblok/Customers";
 import Pricing from "@/components/storyblok/pricing/Pricing";
 import Section from "@/components/storyblok/Section";
@@ -15,9 +14,10 @@ import Pricing_Div_Cols_1 from "@/components/storyblok/pricing/Pricing_Div_Cols_
 import Pricing_Additional_Seats from "@/components/storyblok/pricing/Pricing_Additional_Seats";
 import Pricing_Custom_Plans from "@/components/storyblok/pricing/Pricing_Custom_Plans";
 import FAQ from "@/components/storyblok/faq/FAQ";
+import Hero from "src/components/storyblok/Hero";
+import Dashboard from "@/components/storyblok/Dashboard";
 
 const components = {
-    hero: Hero,
     customers: Customers,
     pricing: Pricing,
     section: Section,
@@ -28,10 +28,12 @@ const components = {
     pricing_div_text_center: Pricing_Div_Text_Center,
     pricing_div_cols_1: Pricing_Div_Cols_1,
     text: Text,
+    hero: Hero,
     pricing_span: Pricing_Span,
     pricing_additional_seats: Pricing_Additional_Seats,
     pricing_custom_plans: Pricing_Custom_Plans,
-    faq: FAQ
+    faq: FAQ,
+    dashboard: Dashboard
 };
 
 storyblokInit({
