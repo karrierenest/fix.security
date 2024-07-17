@@ -14,6 +14,7 @@ import Pricing_Paragraph_lg from "@/components/storyblok/pricing/Pricing_Paragra
 import Pricing_Div_Cols_1 from "@/components/storyblok/pricing/Pricing_Div_Cols_1";
 import Pricing_Additional_Seats from "@/components/storyblok/pricing/Pricing_Additional_Seats";
 import Pricing_Custom_Plans from "@/components/storyblok/pricing/Pricing_Custom_Plans";
+import FAQ from "@/components/storyblok/faq/FAQ";
 
 const components = {
     hero: Hero,
@@ -29,7 +30,8 @@ const components = {
     text: Text,
     pricing_span: Pricing_Span,
     pricing_additional_seats: Pricing_Additional_Seats,
-    pricing_custom_plans: Pricing_Custom_Plans
+    pricing_custom_plans: Pricing_Custom_Plans,
+    faq: FAQ
 };
 
 storyblokInit({
