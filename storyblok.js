@@ -17,6 +17,7 @@ import FAQ from "@/components/storyblok/faq/FAQ";
 import Hero from "src/components/storyblok/Hero";
 import Dashboard from "@/components/storyblok/Dashboard";
 import Testimonials from "@/components/storyblok/Testimonials";
+import Motivation from "@/components/storyblok/Motivation";
 
 const components = {
     customers: Customers,
@@ -35,7 +36,8 @@ const components = {
     pricing_custom_plans: Pricing_Custom_Plans,
     faq: FAQ,
     dashboard: Dashboard,
-    testimonials: Testimonials
+    testimonials: Testimonials,
+    motivation: Motivation
 };
 
 storyblokInit({
