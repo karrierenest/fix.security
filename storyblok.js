@@ -18,6 +18,7 @@ import Hero from "src/components/storyblok/Hero";
 import Dashboard from "@/components/storyblok/Dashboard";
 import Testimonials from "@/components/storyblok/Testimonials";
 import Motivation from "@/components/storyblok/Motivation";
+import About from "@/components/storyblok/About";
 
 const components = {
     customers: Customers,
@@ -37,7 +38,8 @@ const components = {
     faq: FAQ,
     dashboard: Dashboard,
     testimonials: Testimonials,
-    motivation: Motivation
+    motivation: Motivation,
+    about: About
 };
 
 storyblokInit({
