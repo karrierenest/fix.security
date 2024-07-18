@@ -1,4 +1,3 @@
-import Image from "next/image";
 import UnstyledLink from "@/components/common/links/UnstyledLink";
 import {FaGithub, FaLinkedin} from "react-icons/fa6";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
