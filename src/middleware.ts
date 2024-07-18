@@ -48,7 +48,7 @@ export function middleware(request: NextRequest) {
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors ${url.pathname.startsWith('/blog/preview') ? 'https://hashnode.com' : "'none'"};
+    frame-ancestors ${url.pathname.startsWith('/blog/preview') ? 'https://hashnode.com' : "'self' https://app.storyblok.com;"};
     upgrade-insecure-requests;
 `
     .replace(/\s{2,}/g, ' ')

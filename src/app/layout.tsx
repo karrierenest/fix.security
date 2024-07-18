@@ -93,6 +93,7 @@ export default function RootLayout({
       {/*    font-src 'self' data:;*/}
       {/*    default-src 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:;*/}
       {/*  "/>*/}
+      <script src="https://app.storyblok.com/f/storyblok-v2-latest.js" async/>
     </head>
     <body className="bg-white">
     <PosthogProvider>
