@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
-import {LuBug, LuListChecks, LuShuffle} from "react-icons/lu";
+import {LuBug, LuDatabase, LuListChecks, LuSendToBack, LuShuffle} from "react-icons/lu";
 import React from 'react';
 
 
@@ -17,6 +17,18 @@ const features = [
     name: 'Remediation',
     icon: (props) => <LuShuffle {...props} />,
   },
+    {
+        name: 'Cloud asset inventory',
+        icon: (props) => <LuDatabase {...props} />,
+    },
+    {
+        name: 'Compliance checks',
+        icon: (props) => <LuListChecks {...props} />,
+    },
+    {
+        name: 'Resource relationships',
+        icon: (props) => <LuSendToBack {...props} />,
+    },
 ];
 
 const Motivation = ({ blok }) => (
@@ -44,7 +56,8 @@ const Motivation = ({ blok }) => (
                 <div key={`feature-${index}`} className="flex flex-col">
                     <dt className="text-lg font-bold text-gray-900">
                         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-marian-blue-50">
-                            {features.filter(f => f.name === feature.caption)[0].icon({ className: 'h-6 w-6 text-cornflower-blue-600', "aria-hidden": 'true' })}
+                            {features.filter(f => f.name === feature.caption)[0] &&
+                                features.filter(f => f.name === feature.caption)[0].icon({ className: 'h-6 w-6 text-cornflower-blue-600', "aria-hidden": 'true' })}
                         </div>
                         {feature.caption}
                     </dt>
