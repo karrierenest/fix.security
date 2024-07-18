@@ -1,7 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
 import ButtonLink from "@/components/common/links/ButtonLink";
-import {siteConfig} from "@/constants/config";
 import React from "react";
 
 const Compare = ({ blok }) => (

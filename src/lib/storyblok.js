@@ -8,7 +8,7 @@ export const fetchStory = async (slug) => {
         });
         return data?.story || null;
     } catch (error) {
-        console.error("Error fetching story:", error);
+        console.error(`Error fetching story [${slug}]: `, error);
         return null;
     }
 };

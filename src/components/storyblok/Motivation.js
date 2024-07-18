@@ -6,7 +6,7 @@ import {
     LuDatabase, LuGithub,
     LuListChecks,
     LuListTree,
-    LuNetwork, LuPencilRuler,
+    LuNetwork, LuPencilRuler, LuSearchCode,
     LuSendToBack,
     LuShuffle
 } from "react-icons/lu";
@@ -61,6 +61,10 @@ const features = [
     {
         name: 'Customization',
         icon: (props) => <LuPencilRuler {...props} />,
+    },
+    {
+        name: 'Full-text search',
+        icon: (props) => <LuSearchCode {...props} />,
     },
 ];
 
