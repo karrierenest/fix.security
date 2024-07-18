@@ -22,6 +22,8 @@ import About from "@/components/storyblok/About";
 import Meat_The_Team from "@/components/storyblok/Meat_The_Team";
 import Compare from "@/components/storyblok/Compare";
 import Div from "@/components/storyblok/Div";
+import Header1 from "@/components/storyblok/Header1";
+import RichText from "@/components/storyblok/RichText";
 
 const components = {
     customers: Customers,
@@ -45,7 +47,9 @@ const components = {
     about: About,
     meat_the_team: Meat_The_Team,
     compare: Compare,
-    div: Div
+    div: Div,
+    header1: Header1,
+    richtext: RichText
 };
 
 storyblokInit({

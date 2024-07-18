@@ -1,6 +1,15 @@
 import { storyblokEditable } from "@storyblok/react";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
-import {LuBug, LuDatabase, LuListChecks, LuSendToBack, LuShuffle} from "react-icons/lu";
+import {
+    LuBug,
+    LuCloudy,
+    LuDatabase, LuGithub,
+    LuListChecks,
+    LuListTree,
+    LuNetwork, LuPencilRuler,
+    LuSendToBack,
+    LuShuffle
+} from "react-icons/lu";
 import React from 'react';
 
 
@@ -28,6 +37,30 @@ const features = [
     {
         name: 'Resource relationships',
         icon: (props) => <LuSendToBack {...props} />,
+    },
+    {
+        name: 'Agentless coverage',
+        icon: (props) => <LuDatabase {...props} />,
+    },
+    {
+        name: 'Security graph',
+        icon: (props) => <LuNetwork {...props} />,
+    },
+    {
+        name: 'Multi-cloud visibility',
+        icon: (props) => <LuCloudy {...props} />,
+    },
+    {
+        name: 'Open source',
+        icon: (props) => <LuGithub {...props} />,
+    },
+    {
+        name: 'Data model',
+        icon: (props) => <LuListTree {...props} />,
+    },
+    {
+        name: 'Customization',
+        icon: (props) => <LuPencilRuler {...props} />,
     },
 ];
 
