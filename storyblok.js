@@ -1,5 +1,3 @@
-import { apiPlugin, storyblokInit } from "@storyblok/react";
-
 import Customers from "@/components/storyblok/Customers";
 import Pricing from "@/components/storyblok/pricing/Pricing";
 import Section from "@/components/storyblok/Section";
@@ -24,6 +22,7 @@ import Compare from "@/components/storyblok/Compare";
 import Div from "@/components/storyblok/Div";
 import Header1 from "@/components/storyblok/Header1";
 import RichText from "@/components/storyblok/RichText";
+import Page from "@/components/storyblok/Page";
 
 const components = {
     customers: Customers,
@@ -37,6 +36,8 @@ const components = {
     pricing_div_cols_1: Pricing_Div_Cols_1,
     text: Text,
     hero: Hero,
+    Hero: Hero,
+    page: Page,
     pricing_span: Pricing_Span,
     pricing_additional_seats: Pricing_Additional_Seats,
     pricing_custom_plans: Pricing_Custom_Plans,
@@ -52,18 +53,4 @@ const components = {
     richtext: RichText
 };
 
-storyblokInit({
-    accessToken: "903rmFwzHj71DGgoXjUD1Qtt",
-    use: [apiPlugin],
-    components,
-    apiOptions: {
-        cache: { type: 'memory', clear: 'auto' }  // Set cache to memory and clear it automatically
-    },
-    experimental: {
-        // Use experimental options to ensure cache is not used
-        readOptions: {
-            cache: 'no-store'
-        }
-    }
-});
-
+export default components;

@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import PlausibleProvider from 'next-plausible';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 
 import '@/styles/globals.css';
 
@@ -16,6 +16,9 @@ import { isProd } from '@/constants/env';
 import PosthogProvider from '@/providers/posthog';
 import { openGraph } from '@/utils/og';
 import "../../storyblok";
+import {apiPlugin, storyblokInit} from "@storyblok/react";
+import components from "../../storyblok";
+import StoryblokBridgeLoader from "@storyblok/react/bridge-loader";
 
 const url = siteConfig.url;
 const title = siteConfig.title;
@@ -75,6 +78,21 @@ export const viewport: Viewport = {
   colorScheme: 'only light',
 };
 
+storyblokInit({
+  accessToken: "903rmFwzHj71DGgoXjUD1Qtt",
+  use: [apiPlugin],
+  components,
+  apiOptions: {
+    cache: { type: 'memory', clear: 'auto' }  // Set cache to memory and clear it automatically
+  },
+  experimental: {
+    // Use experimental options to ensure cache is not used
+    readOptions: {
+      cache: 'no-store'
+    }
+  }
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -111,6 +129,7 @@ export default function RootLayout({
       </Suspense>
         </PosthogProvider>
       </body>
+    <StoryblokBridgeLoader options={{}} />
     </html>
   );
 }

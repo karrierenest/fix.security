@@ -1,6 +1,20 @@
-import PageComponent from "../../components/PageComponent";
+import {
+    getStoryblokApi, StoryblokComponent
+} from "@storyblok/react/rsc";
 
 export default async function Page({ params }) {
-    const slug = params.slug ? params.slug.join("/") : "home";
-    return <PageComponent slug={slug} />;
+    const { data } = await fetchData();
+
+    return (
+        <div>
+            <StoryblokComponent blok={data.story.content} />
+        </div>
+    );
+}
+
+export async function fetchData() {
+    let sbParams = { version: "draft" };
+
+    const storyblokApi = getStoryblokApi();
+    return await storyblokApi.get(`cdn/stories/home`, sbParams);
 }
