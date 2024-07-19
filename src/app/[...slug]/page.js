@@ -3,7 +3,7 @@ import {
 } from "@storyblok/react/rsc";
 
 export default async function Page({ params }) {
-    const { data } = await fetchData();
+    const { data } = await fetchData(params.slug);
 
     return (
         <div>
@@ -12,9 +12,9 @@ export default async function Page({ params }) {
     );
 }
 
-export async function fetchData() {
+export async function fetchData(slug) {
     let sbParams = { version: "draft" };
 
     const storyblokApi = getStoryblokApi();
-    return await storyblokApi.get(`cdn/stories/home`, sbParams);
+    return await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
 }
