@@ -3,12 +3,14 @@
 import {Disclosure, DisclosureButton, DisclosurePanel} from "@headlessui/react";
 import {LuMinus, LuPlus} from "react-icons/lu";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
+import {storyblokEditable} from "@storyblok/react";
 
 const FAQ = ({ blok }) => {
   return (
       <section
           className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8"
           id={'faq'}
+          {...storyblokEditable(blok)}
       >
           <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
               <h2 className="text-4xl font-extrabold sm:text-5xl">

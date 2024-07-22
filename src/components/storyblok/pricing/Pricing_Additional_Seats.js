@@ -3,7 +3,7 @@ import {LuArmchair} from "react-icons/lu";
 
 const Pricing_Additional_Seats = ({ blok }) => {
   return (
-      <div className="flex flex-col rounded-2xl p-8 ring-1 ring-gray-200">
+      <div className="flex flex-col rounded-2xl p-8 ring-1 ring-gray-200" {...storyblokEditable(blok)}>
           <h3 className="flex items-center gap-3 text-3xl font-bold leading-7 text-cornflower-blue-600">
               <LuArmchair/>
               {blok.caption}

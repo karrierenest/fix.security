@@ -1,5 +1,6 @@
 import {siteConfig} from "@/constants/config";
 import ButtonLink from "@/components/common/links/ButtonLink";
+import {storyblokEditable} from "@storyblok/react";
 
 const Hero = ({blok}) => {
 
@@ -9,7 +10,7 @@ const Hero = ({blok}) => {
 
     return (
         <>
-            <div className="mx-auto pb-12 lg:p-0">
+            <div className="mx-auto pb-12 lg:p-0" {...storyblokEditable(blok)}>
                 <div className="mb-3 text-lg font-bold uppercase text-gray-600 sm:text-xl">
                     {blok.header}
                 </div>

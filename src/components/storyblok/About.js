@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
-import {RichTextRenderer} from "../../utils/richTextRenderer";
+import {RichTextRenderer} from "@/utils/richTextRenderer";
 
 const About = ({ blok }) => (
     <div className="px-6 py-16 sm:py-24 lg:px-8" {...storyblokEditable(blok)}>

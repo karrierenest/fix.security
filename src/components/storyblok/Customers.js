@@ -9,12 +9,12 @@ const Customers = ({blok}) => {
 
     return (
         <>
-            <h2 className="text-balance text-center text-2xl font-bold leading-8 text-gray-900" {...editableProps}>
+            <h2 className="text-balance text-center text-2xl font-bold leading-8 text-gray-900" {...editableProps} {...storyblokEditable(blok)}>
                 {blok.caption}
             </h2>
             <div
                 className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:mt-10 lg:justify-between lg:gap-x-0"
-                {...editableProps}>
+                {...editableProps} {...storyblokEditable(blok)}>
                 {blok.pictures.map((customer, index) => (
                     <div key={`customer-${index}`}>
                         <span className="sr-only">{customer.alt}</span>

@@ -1,6 +1,7 @@
 import {cn} from "@/utils/css";
 import {LuBuilding, LuBuilding2, LuCheck, LuPersonStanding, LuWarehouse} from "react-icons/lu";
 import ButtonLink from "@/components/common/links/ButtonLink";
+import {storyblokEditable} from "@storyblok/react";
 
 const Pricing = ({ blok }) => {
     if (!blok || !blok.body) {
@@ -27,7 +28,7 @@ const Pricing = ({ blok }) => {
 
     return (
         <>
-                <div className="mt-20 flow-root">
+                <div className="mt-20 flow-root" {...storyblokEditable(blok)}>
                     <div className="mx-auto mt-10 grid max-w-md grid-cols-1 items-stretch gap-8 text-left md:max-w-3xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
                         {blok.body.map((tier, index) => (
                             <div

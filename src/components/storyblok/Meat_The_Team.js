@@ -1,9 +1,10 @@
 import UnstyledLink from "@/components/common/links/UnstyledLink";
 import {FaGithub, FaLinkedin} from "react-icons/fa6";
 import {RichTextRenderer} from "@/utils/richTextRenderer";
+import {storyblokEditable} from "@storyblok/react";
 
 const Meat_The_Team = ({ blok }) => (
-    <div className="mx-auto grid max-w-3xl grid-cols-1 gap-x-16 gap-y-20 xl:max-w-7xl xl:grid-cols-6">
+    <div className="mx-auto grid max-w-3xl grid-cols-1 gap-x-16 gap-y-20 xl:max-w-7xl xl:grid-cols-6" {...storyblokEditable(blok)}>
       <div className="max-w-2xl space-y-6 text-lg font-medium leading-8 text-gray-900 sm:text-xl xl:col-span-2">
         <h2 className="text-5xl font-extrabold leading-none sm:text-6xl">
           {blok.caption}
