@@ -79,14 +79,13 @@ export const viewport: Viewport = {
 };
 
 storyblokInit({
-  accessToken: "903rmFwzHj71DGgoXjUD1Qtt",
+  accessToken: process.env.STORYBLOK_OAUTH_TOKEN,
   use: [apiPlugin],
   components,
   apiOptions: {
     cache: { type: 'memory', clear: 'auto' }  // Set cache to memory and clear it automatically
   },
   experimental: {
-    // Use experimental options to ensure cache is not used
     readOptions: {
       cache: 'no-store'
     }
@@ -104,13 +103,6 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${plusJakartaSans.variable}`}>
     <head>
       <PlausibleProvider domain="fix.security" scriptProps={{nonce}}/>
-      {/*<meta httpEquiv="Content-Security-Policy" content="*/}
-      {/*    worker-src blob:;*/}
-      {/*    child-src blob: gap:;*/}
-      {/*    img-src 'self' https://a.storyblok.com data: blob:;*/}
-      {/*    font-src 'self' data:;*/}
-      {/*    default-src 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:;*/}
-      {/*  "/>*/}
       <script src="https://app.storyblok.com/f/storyblok-v2-latest.js" async/>
     </head>
     <body className="bg-white">

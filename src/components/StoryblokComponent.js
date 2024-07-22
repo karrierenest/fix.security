@@ -2,7 +2,6 @@ import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 
 const DynamicComponent = ({ blok }) => (
     <div {...storyblokEditable(blok)}>
-        {/* Render your blok components here */}
         <p>{blok.content}</p>
     </div>
 );

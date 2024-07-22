@@ -17,7 +17,7 @@ import Dashboard from "@/components/storyblok/Dashboard";
 import Testimonials from "@/components/storyblok/Testimonials";
 import Motivation from "@/components/storyblok/Motivation";
 import About from "@/components/storyblok/About";
-import Meat_The_Team from "@/components/storyblok/Meat_The_Team";
+import Team from "@/components/storyblok/Team";
 import Compare from "@/components/storyblok/Compare";
 import Div from "@/components/storyblok/Div";
 import Header1 from "@/components/storyblok/Header1";
@@ -46,7 +46,7 @@ const components = {
     testimonials: Testimonials,
     motivation: Motivation,
     about: About,
-    meat_the_team: Meat_The_Team,
+    team: Team,
     compare: Compare,
     div: Div,
     header1: Header1,
