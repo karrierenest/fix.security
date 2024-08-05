@@ -19,6 +19,7 @@ import "../../storyblok";
 import {apiPlugin, storyblokInit} from "@storyblok/react";
 import components from "../../storyblok";
 import StoryblokBridgeLoader from "@storyblok/react/bridge-loader";
+import Script from "next/script";
 
 const url = siteConfig.url;
 const title = siteConfig.title;
@@ -102,10 +103,40 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${plusJakartaSans.variable}`}>
     <head>
+      <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid={process.env.COOKIEBOT_ID}
+          data-blockingmode="auto"
+          type="text/javascript"
+          strategy="afterInteractive"
+      />
+      <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${process.env.GOOGLE_TAG_MANAGER_CODE}');
+              `,
+          }}
+      />
       <PlausibleProvider domain="fix.security" scriptProps={{nonce}}/>
-      <script src="https://app.storyblok.com/f/storyblok-v2-latest.js" async/>
+      <Script
+          src="https://app.storyblok.com/f/storyblok-v2-latest.js"
+          async
+          strategy="afterInteractive"
+      />
     </head>
     <body className="bg-white">
+    <noscript>
+      <iframe src={`https://www.googletagmanager.com/ns.html?id=${process.env.GOOGLE_TAG_MANAGER_CODE}`}
+              height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}>
+      </iframe>
+    </noscript>
     <PosthogProvider>
       <Header/>
       <main>
@@ -115,13 +146,13 @@ export default function RootLayout({
         </Suspense>
       </main>
       <Footer/>
-      <CookieConsent/>
+      {/*<CookieConsent/>*/}
       <Suspense>
         <PosthogPageView/>
       </Suspense>
-        </PosthogProvider>
-      </body>
-    <StoryblokBridgeLoader options={{}} />
+    </PosthogProvider>
+    </body>
+    <StoryblokBridgeLoader options={{}}/>
     </html>
   );
 }
